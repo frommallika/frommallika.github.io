@@ -39,8 +39,8 @@ export function Home() {
             className="relative h-[50vh] w-full overflow-hidden rounded-sm md:h-[70vh]"
           >
             <img
-              src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=2000&auto=format&fit=crop"
-              alt="Table setting"
+              src="/images/home-hero.png"
+              alt="Indian meal and travel keepsakes arranged on richly patterned textiles"
               className="h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-black/10" />
