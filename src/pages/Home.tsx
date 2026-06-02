@@ -62,8 +62,8 @@ export function Home() {
             <div className="relative order-1 md:order-2">
               <div className="aspect-[3/4] overflow-hidden rounded-sm bg-gray-100">
                 <img
-                  src="https://images.unsplash.com/photo-1589156280159-27698a70f29e?q=80&w=1000&auto=format&fit=crop"
-                  alt="Mallika"
+                  src="/images/mallika-portrait.png"
+                  alt="Portrait of Mallika"
                   className="h-full w-full object-cover transition-transform duration-1000 ease-out hover:scale-105"
                 />
               </div>
