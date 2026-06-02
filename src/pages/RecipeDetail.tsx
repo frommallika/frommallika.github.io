@@ -68,7 +68,7 @@ export function RecipeDetail() {
               </div>
               <div className="flex items-center gap-2">
                 <Users size={18} className="text-white/80" />
-                <span>Serves {recipe.servings}</span>
+                <span>{recipe.servings}</span>
               </div>
               <div className="flex gap-2 md:ml-auto">
                 {recipe.tags.map((tag) => (

@@ -6,7 +6,7 @@ import { recipes } from '../lib/data';
 export function Recipes() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState('All');
-  const filters = ['All', 'Indian', 'Fusion', 'Global', 'Baking', 'Breakfast', 'Dinner'];
+  const filters = ['All', 'Indian', 'Fusion', 'Global', 'Soup', 'Daal', 'Chutney', 'Dinner'];
 
   const filteredRecipes = recipes.filter((recipe) => {
     const normalizedSearch = searchQuery.toLowerCase();
@@ -34,7 +34,7 @@ export function Recipes() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
             <input
               type="text"
-              placeholder="Search for paneer, avocado, or spicy..."
+              placeholder="Search for daal, chutney, or soup..."
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
               className="w-full border border-gray-200 bg-white py-4 pl-12 pr-12 text-lg font-light shadow-sm outline-none transition-all focus:border-saffron focus:ring-1 focus:ring-saffron"
