@@ -581,8 +581,7 @@ export const recipes: Recipe[] = [
       'Add grated ginger, chili powder, jaggery, and salt. Simmer for 10-15 minutes, adding water as needed.',
       'Finish with lime juice. Taste and adjust with more salt, jaggery, chili, or lime until balanced.',
     ],
-    image:
-      'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/gujarati-daal.png',
     featured: true,
     tags: ['Daal', 'Gujarati', 'Dinner'],
   },
@@ -1033,8 +1032,7 @@ export const recipes: Recipe[] = [
       'Blend with an immersion blender until the desired texture is reached.',
       'Serve hot, garnished with cilantro leaves and avocado chunks, with lime wedges and hot sauce on the side.',
     ],
-    image:
-      'https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/black-bean-soup.png',
     tags: ['Soup', 'Dinner', 'Vegan'],
   },
   {
