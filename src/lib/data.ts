@@ -356,7 +356,7 @@ export const guides: Guide[] = [
         url: 'https://www.google.com/maps/place/Meadowlark+Dairy/data=!4m2!3m1!1s0x808fe9bcb7186ac5:0xdafe1dc02363ee36',
         tags: ['Bakery & Dessert'],
         area: 'Pleasanton',
-        coordinates: { lat: 37.6628, lng: -121.8748 },
+        coordinates: { lat: 37.6603178, lng: -121.8745701 },
       },
       {
         id: '88-baobao',
@@ -365,7 +365,7 @@ export const guides: Guide[] = [
         url: 'https://www.google.com/maps/place/88+BaoBao/data=!4m2!3m1!1s0x808f93369e4bddb5:0xaa709fb82568cd39',
         tags: ['Asian'],
         area: 'Dublin',
-        coordinates: { lat: 37.704, lng: -121.924 },
+        coordinates: { lat: 37.7053866, lng: -121.8509624 },
       },
       {
         id: 'lokanta-grill-bar',

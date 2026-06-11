@@ -214,17 +214,10 @@ export function BayAreaEatsGuide({ guide }: BayAreaEatsGuideProps) {
   const markersRef = useRef<Record<string, any>>({});
   const infoWindowRef = useRef<any>(null);
   const [selectedPlaceId, setSelectedPlaceId] = useState(places[0]?.id);
+  const [activeTag, setActiveTag] = useState<PlaceTag | null>(null);
   const [mapStatus, setMapStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const selectedPlace = places.find((place) => place.id === selectedPlaceId) ?? places[0];
   const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string | undefined;
-
-  const stats = useMemo(
-    () => ({
-      total: places.length,
-      areas: new Set(places.map((place) => place.area)).size,
-    }),
-    [places],
-  );
 
   const tagCounts = useMemo(
     () =>
@@ -237,6 +230,23 @@ export function BayAreaEatsGuide({ guide }: BayAreaEatsGuideProps) {
         .filter(({ count }) => count > 0),
     [places],
   );
+
+  const sortedPlaces = useMemo(() => {
+    if (!activeTag) {
+      return places;
+    }
+
+    return [...places].sort((firstPlace, secondPlace) => {
+      const firstMatches = firstPlace.tags.includes(activeTag);
+      const secondMatches = secondPlace.tags.includes(activeTag);
+
+      if (firstMatches === secondMatches) {
+        return 0;
+      }
+
+      return firstMatches ? -1 : 1;
+    });
+  }, [activeTag, places]);
 
   useEffect(() => {
     let cancelled = false;
@@ -391,16 +401,14 @@ export function BayAreaEatsGuide({ guide }: BayAreaEatsGuideProps) {
         initial={{ opacity: 0, y: 24 }}
         transition={{ delay: 0.15, duration: 0.7 }}
       >
-        <div className="grid overflow-hidden border border-stone-200 bg-white shadow-xl shadow-stone-200/60 lg:grid-cols-[minmax(0,1fr)_360px]">
-          <div className="relative min-h-[560px] overflow-hidden bg-stone-100">
+        <div className="mx-auto max-w-6xl overflow-hidden border border-stone-200 bg-white shadow-xl shadow-stone-200/60">
+          <div className="relative min-h-[620px] overflow-hidden bg-stone-100">
             <div className="absolute inset-0" ref={mapRef} />
             {mapStatus !== 'ready' && (
               <div className="absolute inset-0 flex items-center justify-center bg-cream p-8 text-center">
                 <div className="max-w-md">
                   <MapPin className="mx-auto mb-5 h-10 w-10 text-saffron" />
-                  <h2 className="mb-3 font-display text-3xl text-gray-900">
-                    Loading the map
-                  </h2>
+                  <h2 className="mb-3 font-display text-3xl text-gray-900">Loading the map</h2>
                   <p className="font-body text-sm font-light leading-relaxed text-gray-600">
                     {mapStatus === 'error'
                       ? 'The interactive map could not load right now. The full place list is still available below.'
@@ -410,56 +418,6 @@ export function BayAreaEatsGuide({ guide }: BayAreaEatsGuideProps) {
               </div>
             )}
           </div>
-
-          {selectedPlace && (
-            <aside className="flex flex-col justify-between border-t border-stone-200 bg-cream p-8 lg:border-l lg:border-t-0">
-              <div>
-                <div className="mb-5 flex flex-wrap gap-2">
-                  {(selectedPlace.tags.length ? selectedPlace.tags : [selectedPlace.area]).map((tag) => {
-                    const style = getTagStyle(tag);
-
-                    return (
-                      <span
-                        className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-bold uppercase tracking-widest ${style.chip}`}
-                        key={tag}
-                      >
-                        <MapPin className="h-3.5 w-3.5" />
-                        {getTagLabel(tag, selectedPlace.area)}
-                      </span>
-                    );
-                  })}
-                </div>
-                <h2 className="mb-5 font-display text-4xl leading-none text-gray-900">
-                  {selectedPlace.title}
-                </h2>
-                <p className="font-body text-lg font-light leading-relaxed text-gray-600">
-                  {selectedPlace.note || 'Saved favorite.'}
-                </p>
-                <dl className="mt-8 grid grid-cols-3 gap-3 border-t border-stone-200 pt-6 text-center">
-                  <div>
-                    <dt className="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400">Places</dt>
-                    <dd className="mt-1 font-display text-3xl text-gray-900">{stats.total}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400">Areas</dt>
-                    <dd className="mt-1 font-display text-3xl text-gray-900">{stats.areas}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-[0.65rem] font-bold uppercase tracking-widest text-gray-400">Tags</dt>
-                    <dd className="mt-1 font-display text-3xl text-gray-900">{tagCounts.length}</dd>
-                  </div>
-                </dl>
-              </div>
-              <a
-                className="mt-8 inline-flex items-center gap-2 border-b border-saffron/40 pb-1 text-xs font-bold uppercase tracking-widest text-saffron transition-colors hover:border-saffron"
-                href={selectedPlace.url}
-                rel="noreferrer"
-                target="_blank"
-              >
-                Open in Maps <ExternalLink className="h-4 w-4" />
-              </a>
-            </aside>
-          )}
         </div>
       </motion.section>
 
@@ -473,18 +431,22 @@ export function BayAreaEatsGuide({ guide }: BayAreaEatsGuideProps) {
           </div>
           <div className="flex flex-wrap gap-2">
             {tagCounts.map(({ count, style, tag }) => (
-              <span
-                className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-bold uppercase tracking-widest ${style.chip}`}
+              <button
+                className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-bold uppercase tracking-widest transition-transform hover:-translate-y-0.5 ${style.chip} ${
+                  activeTag === tag ? 'ring-2 ring-gray-900 ring-offset-2 ring-offset-cream' : ''
+                }`}
                 key={tag}
+                onClick={() => setActiveTag((currentTag) => (currentTag === tag ? null : tag))}
+                type="button"
               >
                 {style.label} {count}
-              </span>
+              </button>
             ))}
           </div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {places.map((place, index) => {
+          {sortedPlaces.map((place, index) => {
             const primaryTagStyle = getPrimaryTagStyle(place);
 
             return (
@@ -506,13 +468,21 @@ export function BayAreaEatsGuide({ guide }: BayAreaEatsGuideProps) {
                         const style = getTagStyle(tag);
 
                         return (
-                          <span
-                            className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-bold uppercase tracking-widest ${style.chip}`}
+                          <button
+                            className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-bold uppercase tracking-widest transition-transform hover:-translate-y-0.5 ${style.chip} ${
+                              activeTag === tag ? 'ring-2 ring-gray-900 ring-offset-2 ring-offset-white' : ''
+                            }`}
                             key={tag}
+                            onClick={() => {
+                              if (tag in tagStyles) {
+                                setActiveTag((currentTag) => (currentTag === tag ? null : (tag as PlaceTag)));
+                              }
+                            }}
+                            type="button"
                           >
                             <Utensils className="h-3.5 w-3.5" />
                             {getTagLabel(tag, place.area)}
-                          </span>
+                          </button>
                         );
                       })}
                     </div>
