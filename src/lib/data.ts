@@ -627,8 +627,7 @@ export const recipes: Recipe[] = [
       'Cover and cook for about 20 minutes, or until the quinoa is tender and the water has been absorbed. Add a little more water and continue cooking if needed.',
       'Fluff with a fork and serve hot with raita or pickle.',
     ],
-    image:
-      'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/quinoa-pulav.png',
     featured: true,
     tags: ['One-Pot', 'Dinner', 'Healthy'],
   },
@@ -859,8 +858,7 @@ export const recipes: Recipe[] = [
       'Add a splash of water to cover the bottom of the pot. Cover and steam until cooked to your preferred doneness, adding small splashes of water as needed.',
       'Serve warm or at room temperature with yogurt, puffed rice, or as a side dish.',
     ],
-    image:
-      'https://images.unsplash.com/photo-1519996529931-28324d5a630e?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/sprouted-mung-beans.png',
     tags: ['Gujarati', 'Healthy', 'Side'],
   },
   {
