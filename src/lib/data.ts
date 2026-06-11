@@ -362,10 +362,10 @@ export const guides: Guide[] = [
         id: '88-baobao',
         title: '88 BaoBao',
         note: 'Really great Chinese food! The hot oil noodles are a favorite.',
-        url: 'https://www.google.com/maps/place/88+BaoBao/data=!4m2!3m1!1s0x808f93369e4bddb5:0xaa709fb82568cd39',
+        url: 'https://www.google.com/maps/search/?api=1&query=88%20BaoBao%203330%20Village%20Dr%20Castro%20Valley%20CA%2094546',
         tags: ['Asian'],
-        area: 'Dublin',
-        coordinates: { lat: 37.7053866, lng: -121.8509624 },
+        area: 'Castro Valley',
+        coordinates: { lat: 37.6967253, lng: -122.0779562 },
       },
       {
         id: 'lokanta-grill-bar',
