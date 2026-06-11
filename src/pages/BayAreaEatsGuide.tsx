@@ -12,10 +12,12 @@ declare global {
     google?: {
       maps?: any;
     };
+    L?: any;
   }
 }
 
 let googleMapsLoadPromise: Promise<void> | null = null;
+let leafletLoadPromise: Promise<void> | null = null;
 
 const tagStyles = {
   Indian: {
@@ -124,6 +126,49 @@ function loadGoogleMaps(apiKey: string) {
   return googleMapsLoadPromise;
 }
 
+function loadLeaflet() {
+  if (window.L) {
+    return Promise.resolve();
+  }
+
+  if (leafletLoadPromise) {
+    return leafletLoadPromise;
+  }
+
+  leafletLoadPromise = new Promise((resolve, reject) => {
+    if (!document.querySelector('link[data-bay-area-eats-leaflet]')) {
+      const stylesheet = document.createElement('link');
+      stylesheet.dataset.bayAreaEatsLeaflet = 'true';
+      stylesheet.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+      stylesheet.rel = 'stylesheet';
+      document.head.appendChild(stylesheet);
+    }
+
+    const existingScript = document.querySelector<HTMLScriptElement>('script[data-bay-area-eats-leaflet]');
+
+    if (existingScript) {
+      existingScript.addEventListener('load', () => resolve(), { once: true });
+      existingScript.addEventListener('error', () => reject(new Error('Leaflet failed to load.')), {
+        once: true,
+      });
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.defer = true;
+    script.dataset.bayAreaEatsLeaflet = 'true';
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    script.addEventListener('load', () => resolve(), { once: true });
+    script.addEventListener('error', () => reject(new Error('Leaflet failed to load.')), {
+      once: true,
+    });
+    document.head.appendChild(script);
+  });
+
+  return leafletLoadPromise;
+}
+
 function escapeHtml(value: string) {
   return value.replace(/[&<>"']/g, (character) => {
     switch (character) {
@@ -165,10 +210,11 @@ export function BayAreaEatsGuide({ guide }: BayAreaEatsGuideProps) {
   const places = guide.places ?? [];
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
+  const mapProviderRef = useRef<'google' | 'leaflet' | null>(null);
   const markersRef = useRef<Record<string, any>>({});
   const infoWindowRef = useRef<any>(null);
   const [selectedPlaceId, setSelectedPlaceId] = useState(places[0]?.id);
-  const [mapStatus, setMapStatus] = useState<'loading' | 'ready' | 'missing-key' | 'error'>('loading');
+  const [mapStatus, setMapStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const selectedPlace = places.find((place) => place.id === selectedPlaceId) ?? places[0];
   const googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY as string | undefined;
 
@@ -193,69 +239,114 @@ export function BayAreaEatsGuide({ guide }: BayAreaEatsGuideProps) {
   );
 
   useEffect(() => {
-    if (!googleMapsApiKey) {
-      setMapStatus('missing-key');
-      return;
-    }
-
     let cancelled = false;
+    const loadMap = googleMapsApiKey ? loadGoogleMaps(googleMapsApiKey) : loadLeaflet();
 
-    loadGoogleMaps(googleMapsApiKey)
+    loadMap
       .then(() => {
-        if (cancelled || !mapRef.current || !window.google?.maps) {
+        if (cancelled || !mapRef.current) {
           return;
         }
 
-        const googleMaps = window.google.maps;
-        const map = new googleMaps.Map(mapRef.current, {
-          center: { lat: 37.69, lng: -122.18 },
-          fullscreenControl: true,
-          gestureHandling: 'greedy',
-          mapTypeControl: false,
-          streetViewControl: false,
-          zoom: 10,
-        });
-        const bounds = new googleMaps.LatLngBounds();
-        const infoWindow = new googleMaps.InfoWindow();
-        const markers: Record<string, any> = {};
+        if (googleMapsApiKey && window.google?.maps) {
+          const googleMaps = window.google.maps;
+          const map = new googleMaps.Map(mapRef.current, {
+            center: { lat: 37.69, lng: -122.18 },
+            fullscreenControl: true,
+            gestureHandling: 'greedy',
+            mapTypeControl: false,
+            streetViewControl: false,
+            zoom: 10,
+          });
+          const bounds = new googleMaps.LatLngBounds();
+          const infoWindow = new googleMaps.InfoWindow();
+          const markers: Record<string, any> = {};
 
-        places.forEach((place) => {
-          const primaryTagStyle = getPrimaryTagStyle(place);
-          const marker = new googleMaps.Marker({
-            icon: {
-              fillColor: primaryTagStyle.color,
-              fillOpacity: 1,
-              path: googleMaps.SymbolPath.CIRCLE,
-              scale: 9,
-              strokeColor: '#ffffff',
-              strokeWeight: 2,
-            },
-            map,
-            position: place.coordinates,
-            title: place.title,
+          places.forEach((place) => {
+            const primaryTagStyle = getPrimaryTagStyle(place);
+            const marker = new googleMaps.Marker({
+              icon: {
+                fillColor: primaryTagStyle.color,
+                fillOpacity: 1,
+                path: googleMaps.SymbolPath.CIRCLE,
+                scale: 9,
+                strokeColor: '#ffffff',
+                strokeWeight: 2,
+              },
+              map,
+              position: place.coordinates,
+              title: place.title,
+            });
+
+            marker.addListener('click', () => {
+              setSelectedPlaceId(place.id);
+              infoWindow.setContent(makeInfoWindowContent(place));
+              infoWindow.open({ anchor: marker, map });
+            });
+
+            bounds.extend(place.coordinates);
+            markers[place.id] = marker;
           });
 
-          marker.addListener('click', () => {
-            setSelectedPlaceId(place.id);
-            infoWindow.setContent(makeInfoWindowContent(place));
-            infoWindow.open({ anchor: marker, map });
+          map.fitBounds(bounds, 60);
+          mapInstanceRef.current = map;
+          mapProviderRef.current = 'google';
+          markersRef.current = markers;
+          infoWindowRef.current = infoWindow;
+
+          const initialPlace = places.find((place) => place.id === selectedPlaceId) ?? places[0];
+          const initialMarker = initialPlace ? markers[initialPlace.id] : undefined;
+
+          if (initialPlace && initialMarker) {
+            infoWindow.setContent(makeInfoWindowContent(initialPlace));
+            infoWindow.open({ anchor: initialMarker, map });
+          }
+        } else if (window.L) {
+          const leaflet = window.L;
+          const map = leaflet.map(mapRef.current, {
+            scrollWheelZoom: true,
+          });
+          const bounds = leaflet.latLngBounds([]);
+          const markers: Record<string, any> = {};
+
+          leaflet
+            .tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+              maxZoom: 19,
+            })
+            .addTo(map);
+
+          places.forEach((place) => {
+            const primaryTagStyle = getPrimaryTagStyle(place);
+            const marker = leaflet.marker([place.coordinates.lat, place.coordinates.lng], {
+              icon: leaflet.divIcon({
+                className: '',
+                html: `<span style="display:block;width:18px;height:18px;border-radius:9999px;background:${primaryTagStyle.color};border:2px solid #fff;box-shadow:0 4px 12px rgba(31,41,55,0.35);"></span>`,
+                iconAnchor: [9, 9],
+                iconSize: [18, 18],
+              }),
+              title: place.title,
+            });
+
+            marker.bindPopup(makeInfoWindowContent(place));
+            marker.on('click', () => setSelectedPlaceId(place.id));
+            marker.addTo(map);
+            bounds.extend([place.coordinates.lat, place.coordinates.lng]);
+            markers[place.id] = marker;
           });
 
-          bounds.extend(place.coordinates);
-          markers[place.id] = marker;
-        });
+          map.fitBounds(bounds, { padding: [48, 48] });
+          mapInstanceRef.current = map;
+          mapProviderRef.current = 'leaflet';
+          markersRef.current = markers;
+          infoWindowRef.current = null;
 
-        map.fitBounds(bounds, 60);
-        mapInstanceRef.current = map;
-        markersRef.current = markers;
-        infoWindowRef.current = infoWindow;
+          const initialPlace = places.find((place) => place.id === selectedPlaceId) ?? places[0];
+          const initialMarker = initialPlace ? markers[initialPlace.id] : undefined;
 
-        const initialPlace = places.find((place) => place.id === selectedPlaceId) ?? places[0];
-        const initialMarker = initialPlace ? markers[initialPlace.id] : undefined;
-
-        if (initialPlace && initialMarker) {
-          infoWindow.setContent(makeInfoWindowContent(initialPlace));
-          infoWindow.open({ anchor: initialMarker, map });
+          if (initialMarker) {
+            initialMarker.openPopup();
+          }
         }
 
         setMapStatus('ready');
@@ -272,7 +363,7 @@ export function BayAreaEatsGuide({ guide }: BayAreaEatsGuideProps) {
   }, [googleMapsApiKey, places]);
 
   useEffect(() => {
-    if (!selectedPlace || !mapInstanceRef.current || !infoWindowRef.current) {
+    if (!selectedPlace || !mapInstanceRef.current) {
       return;
     }
 
@@ -282,9 +373,14 @@ export function BayAreaEatsGuide({ guide }: BayAreaEatsGuideProps) {
       return;
     }
 
-    mapInstanceRef.current.panTo(selectedPlace.coordinates);
-    infoWindowRef.current.setContent(makeInfoWindowContent(selectedPlace));
-    infoWindowRef.current.open({ anchor: marker, map: mapInstanceRef.current });
+    if (mapProviderRef.current === 'google' && infoWindowRef.current) {
+      mapInstanceRef.current.panTo(selectedPlace.coordinates);
+      infoWindowRef.current.setContent(makeInfoWindowContent(selectedPlace));
+      infoWindowRef.current.open({ anchor: marker, map: mapInstanceRef.current });
+    } else if (mapProviderRef.current === 'leaflet') {
+      mapInstanceRef.current.panTo([selectedPlace.coordinates.lat, selectedPlace.coordinates.lng]);
+      marker.openPopup();
+    }
   }, [selectedPlace]);
 
   return (
@@ -303,14 +399,12 @@ export function BayAreaEatsGuide({ guide }: BayAreaEatsGuideProps) {
                 <div className="max-w-md">
                   <MapPin className="mx-auto mb-5 h-10 w-10 text-saffron" />
                   <h2 className="mb-3 font-display text-3xl text-gray-900">
-                    {mapStatus === 'missing-key' ? 'Google Maps key needed' : 'Loading the map'}
+                    Loading the map
                   </h2>
                   <p className="font-body text-sm font-light leading-relaxed text-gray-600">
-                    {mapStatus === 'missing-key'
-                      ? 'Add VITE_GOOGLE_MAPS_API_KEY to the site environment to show the interactive Google Map with all saved places.'
-                      : mapStatus === 'error'
-                        ? 'Google Maps could not load right now. The full place list is still available below.'
-                        : 'Pins are being placed across the Bay Area.'}
+                    {mapStatus === 'error'
+                      ? 'The interactive map could not load right now. The full place list is still available below.'
+                      : 'Pins are being placed across the Bay Area.'}
                   </p>
                 </div>
               </div>
