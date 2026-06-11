@@ -32,9 +32,9 @@ const tagStyles = {
   },
   'American/California': {
     label: 'American/California',
-    color: '#B45309',
-    chip: 'bg-gold text-white',
-    outline: 'border-gold/60 shadow-gold/10',
+    color: '#1E3A5F',
+    chip: 'bg-navy text-white',
+    outline: 'border-navy/60 shadow-navy/10',
   },
   Asian: {
     label: 'Asian',

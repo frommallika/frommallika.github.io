@@ -17,6 +17,7 @@ export default {
         rust: '#C46A3C',
         olive: '#6E7F4D',
         plum: '#5A2A5A',
+        navy: '#1E3A5F',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
