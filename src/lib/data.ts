@@ -755,8 +755,7 @@ export const recipes: Recipe[] = [
       'Taste and adjust with more salt, lemon juice, cumin, or chili garlic sauce.',
       'Serve with pita, cucumbers, crackers, or fresh vegetables.',
     ],
-    image:
-      'https://images.unsplash.com/photo-1570197788417-0e82375c9371?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/recipe-beet-hummus.jpg',
     tags: ['Dip', 'Mezze', 'Vegan'],
   },
   {
@@ -823,8 +822,7 @@ export const recipes: Recipe[] = [
       "Top with feta and za'atar if using.",
       'Add crushed pita chips or chopped almonds just before serving for crunch.',
     ],
-    image:
-      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/recipe-mediterranean-couscous-salad.jpg',
     tags: ['Salad', 'Lunch', 'Make-Ahead'],
   },
   {
@@ -896,8 +894,7 @@ export const recipes: Recipe[] = [
       'Garnish with chopped cilantro if desired.',
       'Serve hot with rice or roti.',
     ],
-    image:
-      'https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/recipe-simple-masoor-daal.jpg',
     tags: ['Daal', 'Dinner', 'Quick'],
   },
   {
