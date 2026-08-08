@@ -1214,8 +1214,7 @@ export const menus: Menu[] = [
     season: 'Monsoon/Winter',
     occasion: 'High Tea',
     items: [],
-    image:
-      'https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/menu-afternoon-chai-party.jpg',
     details: {
       intro: 'A selection of crispy, savory, and sweet treats that pair perfectly with masala chai.',
       timeline: [],
