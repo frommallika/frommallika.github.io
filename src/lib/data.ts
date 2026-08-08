@@ -657,8 +657,7 @@ export const recipes: Recipe[] = [
       'Taste and adjust the seasoning with additional salt, lime juice, or chilies as desired.',
       'Transfer to containers and refrigerate or freeze for later use.',
     ],
-    image:
-      'https://images.unsplash.com/photo-1606914469633-bd39206ea739?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/recipe-green-chutney.jpg',
     tags: ['Chutney', 'Condiment', 'Vegan'],
   },
   {
@@ -686,8 +685,7 @@ export const recipes: Recipe[] = [
       'Remove from the heat and let the chutney cool completely.',
       'Transfer to a clean jar or bottle and refrigerate.',
     ],
-    image:
-      'https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/recipe-meethi-chutney.jpg',
     tags: ['Chutney', 'Condiment', 'Sweet'],
   },
   {
