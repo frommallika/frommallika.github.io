@@ -58,7 +58,7 @@ export function Guides() {
               transition={{ delay: 0.2 + index * 0.2, duration: 0.5 }}
               className="group relative flex h-full flex-col overflow-hidden bg-white shadow-lg transition-all duration-500 hover:shadow-2xl"
             >
-              <div className="relative h-72 overflow-hidden">
+              <Link to={`/guides/${guide.id}`} className="relative block h-72 overflow-hidden" aria-label={`Read ${guide.title}`}>
                 <div className="absolute inset-0 z-10 bg-black/10 transition-colors group-hover:bg-black/0" />
                 <img
                   src={guide.image}
@@ -68,15 +68,17 @@ export function Guides() {
                 <div className="absolute left-6 top-6 z-20 rounded-full bg-white/90 p-3 text-gray-900 shadow-sm backdrop-blur-sm">
                   {getIcon(guide.id)}
                 </div>
-              </div>
+              </Link>
 
               <div className="flex flex-1 flex-col p-8">
                 <span className="mb-3 text-xs font-bold uppercase tracking-widest text-saffron">
                   {guide.subtitle}
                 </span>
-                <h3 className="mb-4 font-display text-3xl text-gray-900 transition-colors group-hover:text-saffron">
-                  {guide.title}
-                </h3>
+                <Link to={`/guides/${guide.id}`} className="mb-4 block">
+                  <h3 className="font-display text-3xl text-gray-900 transition-colors hover:text-saffron group-hover:text-saffron">
+                    {guide.title}
+                  </h3>
+                </Link>
                 <p className="mb-8 flex-1 font-body font-light leading-relaxed text-gray-500">{guide.description}</p>
 
                 <div className="mt-auto border-t border-gray-100 pt-6">

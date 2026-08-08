@@ -48,13 +48,17 @@ export function Menus() {
                 index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               }`}
             >
-              <div className="relative min-h-[400px] w-full overflow-hidden md:w-1/2">
+              <Link
+                to={`/menus/${menu.slug}`}
+                className="relative block min-h-[400px] w-full overflow-hidden md:w-1/2"
+                aria-label={`Read ${menu.title}`}
+              >
                 <img
                   src={menu.image}
                   alt={menu.title}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-              </div>
+              </Link>
 
               <div className="relative flex w-full flex-col justify-center p-10 md:w-1/2 md:p-16">
                 <span className="pointer-events-none absolute right-6 top-4 select-none font-display text-9xl text-gray-50 opacity-50">
@@ -64,9 +68,11 @@ export function Menus() {
                 <span className="mb-4 block text-xs font-bold uppercase tracking-widest text-emerald">
                   {menu.occasion}
                 </span>
-                <h2 className="mb-6 font-display text-4xl text-gray-900 transition-colors group-hover:text-saffron">
-                  {menu.title}
-                </h2>
+                <Link to={`/menus/${menu.slug}`} className="mb-6 block">
+                  <h2 className="font-display text-4xl text-gray-900 transition-colors hover:text-saffron group-hover:text-saffron">
+                    {menu.title}
+                  </h2>
+                </Link>
                 <p className="mb-10 font-body text-lg font-light leading-relaxed text-gray-500">
                   {menu.description}
                 </p>
