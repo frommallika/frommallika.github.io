@@ -719,8 +719,7 @@ export const recipes: Recipe[] = [
       'Mix gently until combined. Taste and adjust with more kasundi, salt, pepper, or pickle brine.',
       'Serve on toast, in a sandwich, or with crackers.',
     ],
-    image:
-      'https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/recipe-kasundi-egg-salad.jpg',
     tags: ['Lunch', 'Egg', 'Sandwich'],
   },
   {
