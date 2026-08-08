@@ -540,8 +540,7 @@ export const recipes: Recipe[] = [
       'Taste and add salt as needed.',
       'Serve hot.',
     ],
-    image:
-      'https://images.unsplash.com/photo-1619582539958-e0454790089e?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/recipe-cauliflower-miso-soup.jpg',
     featured: true,
     tags: ['Soup', 'Vegan', 'Dinner'],
   },
@@ -784,8 +783,7 @@ export const recipes: Recipe[] = [
       'Let sit for at least 30 minutes before serving.',
       'Garnish with olive oil if desired and serve with mezze, pita, vegetables, or crackers.',
     ],
-    image:
-      'https://images.unsplash.com/photo-1604908812867-3fb2a06f8c63?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/recipe-labneh-dip.jpg',
     tags: ['Dip', 'Mezze', 'Quick'],
   },
   {
@@ -990,8 +988,7 @@ export const recipes: Recipe[] = [
       'Shape into ladoos while still warm.',
       'Allow the ladoos to cool completely before storing in an airtight container.',
     ],
-    image:
-      'https://images.unsplash.com/photo-1605197161470-5d2a9af77f49?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/recipe-adadiya-ladoo.jpg',
     tags: ['Dessert', 'Gujarati', 'Winter'],
   },
   {
@@ -1092,8 +1089,7 @@ export const menus: Menu[] = [
     season: 'Fall/Winter',
     occasion: 'Festival',
     items: [],
-    image:
-      'https://images.unsplash.com/photo-1517260739737-aa487b8b8d2b?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/menu-festive-indian-dinner.jpg',
     details: {
       intro: 'This menu brings together the most beloved classics for a truly festive feast.',
       timeline: [
@@ -1301,8 +1297,7 @@ export const menus: Menu[] = [
     season: 'Spring',
     occasion: 'Lunch',
     items: [],
-    image:
-      'https://images.unsplash.com/photo-1560155016-029a73842c16?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/menu-mediterranean-lunch.jpg',
     details: {
       intro: 'Light yet satisfying dishes perfect for a sunny afternoon lunch.',
       timeline: [],

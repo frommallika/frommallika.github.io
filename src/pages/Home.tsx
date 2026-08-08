@@ -39,7 +39,7 @@ export function Home() {
             className="relative h-[50vh] w-full overflow-hidden rounded-sm md:h-[70vh]"
           >
             <img
-              src="/images/home-hero.png"
+              src="/images/home-hero.jpg"
               alt="Indian meal and travel keepsakes arranged on richly patterned textiles"
               className="h-full w-full object-cover"
             />
@@ -62,7 +62,7 @@ export function Home() {
             <div className="relative order-1 md:order-2">
               <div className="aspect-[3/4] overflow-hidden rounded-sm bg-gray-100">
                 <img
-                  src="/images/mallika-portrait.png"
+                  src="/images/mallika-portrait.jpg"
                   alt="Portrait of Mallika"
                   className="h-full w-full object-cover transition-transform duration-1000 ease-out hover:scale-105"
                 />

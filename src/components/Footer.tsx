@@ -1,4 +1,3 @@
-import { Heart, Instagram, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function Footer() {
@@ -12,17 +11,6 @@ export function Footer() {
               Vegetarian recipes rooted in Indian tradition and inspired by flavors from around the world.
               Celebrating the art of hosting, travel, and eating well.
             </p>
-            <div className="mt-8 flex space-x-6">
-              <a href="https://www.instagram.com/" aria-label="Instagram" className="text-white/60 transition-colors hover:text-saffron">
-                <Instagram size={20} />
-              </a>
-              <a href="mailto:hello@example.com" aria-label="Email" className="text-white/60 transition-colors hover:text-saffron">
-                <Mail size={20} />
-              </a>
-              <Link to="/" aria-label="Home" className="text-white/60 transition-colors hover:text-saffron">
-                <Heart size={20} />
-              </Link>
-            </div>
           </div>
 
           <div className="space-y-4 md:pl-12">
