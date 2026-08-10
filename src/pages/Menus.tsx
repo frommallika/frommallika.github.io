@@ -9,7 +9,7 @@ export function Menus() {
       <div className="relative flex h-[60vh] min-h-[500px] items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/images/menu-hosting-hero.jpg"
+            src="/images/menu-hosting-hero-original.png"
             alt="Candlelit dinner setting with wine and flowers"
             className="h-full w-full object-cover"
           />
