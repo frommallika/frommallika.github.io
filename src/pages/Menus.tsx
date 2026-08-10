@@ -35,22 +35,27 @@ export function Menus() {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 py-24">
-        <div className="mx-auto max-w-6xl space-y-24">
-          {menus.map((menu, index) => (
+      <div className="container mx-auto px-6 py-20 md:py-24">
+        <div className="mx-auto mb-12 max-w-4xl text-center">
+          <span className="mb-3 block text-xs font-bold uppercase tracking-widest text-saffron">
+            Browse Menus
+          </span>
+          <h2 className="font-display text-4xl text-gray-900 md:text-5xl">Hosting ideas at a glance</h2>
+        </div>
+
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {menus.map((menu) => (
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.8 }}
               key={menu.id}
-              className={`group flex flex-col items-stretch overflow-hidden bg-white shadow-sm transition-shadow duration-500 hover:shadow-lg ${
-                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-              }`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.5 }}
+              className="group flex h-full flex-col overflow-hidden rounded-sm bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               <Link
                 to={`/menus/${menu.slug}`}
-                className="relative block min-h-[400px] w-full overflow-hidden md:w-1/2"
+                className="relative block aspect-[4/3] w-full overflow-hidden bg-stone-100"
                 aria-label={`Read ${menu.title}`}
               >
                 <img
@@ -60,26 +65,25 @@ export function Menus() {
                 />
               </Link>
 
-              <div className="relative flex w-full flex-col justify-center p-10 md:w-1/2 md:p-16">
-                <span className="pointer-events-none absolute right-6 top-4 select-none font-display text-9xl text-gray-50 opacity-50">
-                  {index + 1}
-                </span>
+              <div className="flex flex-1 flex-col p-6">
+                <div className="mb-4 flex flex-wrap items-center gap-2 text-[10px] font-bold uppercase tracking-widest">
+                  <span className="text-emerald">{menu.occasion}</span>
+                  <span className="text-gray-300">/</span>
+                  <span className="text-gray-400">{menu.season}</span>
+                </div>
 
-                <span className="mb-4 block text-xs font-bold uppercase tracking-widest text-emerald">
-                  {menu.occasion}
-                </span>
-                <Link to={`/menus/${menu.slug}`} className="mb-6 block">
-                  <h2 className="font-display text-4xl text-gray-900 transition-colors hover:text-saffron group-hover:text-saffron">
+                <Link to={`/menus/${menu.slug}`} className="mb-3 block">
+                  <h2 className="font-display text-2xl leading-tight text-gray-900 transition-colors hover:text-saffron group-hover:text-saffron md:text-3xl">
                     {menu.title}
                   </h2>
                 </Link>
-                <p className="mb-10 font-body text-lg font-light leading-relaxed text-gray-500">
+                <p className="mb-6 flex-1 font-body text-sm font-light leading-relaxed text-gray-500 md:text-base">
                   {menu.description}
                 </p>
 
                 <Link
                   to={`/menus/${menu.slug}`}
-                  className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-900 transition-all hover:text-saffron group-hover:gap-4"
+                  className="mt-auto inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-900 transition-all hover:text-saffron group-hover:gap-3"
                 >
                   Read Full Guide <ArrowRight size={16} />
                 </Link>
