@@ -75,8 +75,7 @@ export const guides: Guide[] = [
     subtitle: 'Home Rituals',
     description:
       'The teas and coffees I actually buy, how I make them, and the small techniques that make them better.',
-    image:
-      'https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/guide-tea-coffee-at-home.png',
     date: 'September 2026',
     content: [
       {
