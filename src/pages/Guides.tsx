@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, BookOpen, Compass, MapPin } from 'lucide-react';
+import { ArrowRight, BookOpen, Coffee, Compass, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { guides } from '../lib/data';
 
@@ -12,6 +12,8 @@ export function Guides() {
         return <Compass className="h-6 w-6" />;
       case 'textiles':
         return <BookOpen className="h-6 w-6" />;
+      case 'tea-coffee-at-home':
+        return <Coffee className="h-6 w-6" />;
       default:
         return <Compass className="h-6 w-6" />;
     }

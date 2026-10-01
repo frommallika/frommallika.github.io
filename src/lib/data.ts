@@ -70,6 +70,189 @@ export interface GuidePlace {
 
 export const guides: Guide[] = [
   {
+    id: 'tea-coffee-at-home',
+    title: 'Tea & Coffee at Home',
+    subtitle: 'Home Rituals',
+    description:
+      'The teas and coffees I actually buy, how I make them, and the small techniques that make them better.',
+    image:
+      'https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=1000&auto=format&fit=crop',
+    date: 'September 2026',
+    content: [
+      {
+        heading: 'The High-ROI Test',
+        text: `I care a lot about high-ROI things.
+
+For products, that means I don't want to pay more just because something has the right brand name, and I don't want appliances or gadgets taking up space in my kitchen unless they genuinely earn it.
+
+For time and effort, it means I don't like adding steps unless they noticeably improve the result. That doesn't mean everything needs to be fast. Proper stovetop chai takes considerably more effort than instant coffee, but I love both making it and drinking it, so the effort is completely worth it to me.
+
+That's basically the test for everything on this page: does the product, technique, or ritual give me enough delight to justify the money, space, or effort it requires?`,
+      },
+      {
+        heading: 'Coffee',
+        text: `With coffee, I lean heavily toward roasty, toasty, chocolatey, and caramel-y flavors.
+
+A lot of modern specialty coffee celebrates brighter, fruitier, and more floral flavors. I usually don't enjoy that vibe. I prefer fuller-bodied coffee that works especially well with milk. For example, the Silken Splendor blend at Philz is one that I like, because its chocolate and toffee notes are much closer to my preferred coffee profile.
+
+I also rarely buy coffee out. Most of the time, I'd genuinely rather make it at home.`,
+      },
+      {
+        heading: 'South Indian Filter Coffee',
+        text: `I've admittedly not explored a lot of different South Indian filter coffees, but my current favorite is Narasu's Udhayam 80:20 Coffee & Chicory Blend.
+
+My routine:
+Night before: set the filter.
+Morning: heat milk + jaggery, froth, add decoction.
+
+Very little active morning effort for a genuinely excellent cup of coffee. To me, this is the highest-ROI coffee routine.
+
+I use a traditional South Indian coffee filter and set it the night before. Add the coffee, pour over the 200-degree water, and let the decoction drip overnight.
+
+In the morning, I put milk and jaggery into a glass measuring cup and microwave it for about 1 1/2 minutes, froth it, and add the coffee decoction.
+
+That's basically it.
+
+I love the flavor profile of South Indian filter coffee: strong, roasty, deep, just sweet enough, and perfectly milky. The chicory adds body and a slightly bitter, caramelized quality that I enjoy with jaggery.`,
+      },
+      {
+        heading: 'Instant Coffee',
+        text: `My coffee: Mount Hagen Organic Instant Coffee
+My frother: FoodVille rechargeable milk frother
+
+Good instant coffee is underrated.
+
+Mount Hagen tastes good and can turn into a hot coffee or iced latte in a couple of minutes. This is usually what I make when I want coffee asap.
+
+There is one step I don't skip: bloom the instant coffee in a little room-temperature water first.
+
+I find the flavor is better than pouring very hot water directly over the granules.
+
+Iced latte:
+Bloom the instant coffee with a small amount of room-temperature water. Add sugar and use the frother to whip the mixture until everything is dissolved and foamy. Add ice, then your milk of choice. Reliably good within minutes.
+
+Hot latte:
+Bloom the coffee the same way. Separately, heat the milk and sugar, froth the milk, and pour it into the coffee. It takes almost no time, but these steps make enough of a difference in the end product.
+
+The frother:
+My FoodVille rechargeable frother is a good example of something that has completely earned its space.
+
+It's small, rechargeable, easy to grab, and I use it practically every day for instant coffee, filter coffee, and other drinks. It's one of the best gifts I've gotten.
+
+I don't need an espresso machine or a large milk-frothing appliance for the drinks I make. This does the job. Friends have told me the hot coffees I make at home taste "like something from a fancy cafe," and honestly, a lot of that comes down to this little frother.`,
+      },
+      {
+        heading: 'Tea',
+        text: `My tea preferences are almost the opposite of my coffee preferences.
+
+With tea, I'm much more drawn to floral, fruity, herbal, and even earthy, smoky flavors.
+
+I also like much more variety with tea. Chai is the constant, but otherwise what I reach for changes with the season, time of day, and mood.`,
+      },
+      {
+        heading: 'My Everyday Chai',
+        text: `Chai sits at the opposite end of the effort spectrum from instant coffee.
+
+It is not a shortcut drink. It takes longer, uses a saucepan, and requires standing at the stove for a bit.
+
+I think it is completely worth it.
+
+Proper stovetop chai is my favorite drink year-round. There's something grounding about making it, and there's something special about sitting down with people over chai and snacks.
+
+My tea: Tea India Mamri CTC Chai
+
+How I make 1 cup of chai:
+1. Boil about half a mug of water with 1 tablespoon of black tea, sugar to taste, usually about 1 tablespoon for me, and about 1 tablespoon grated fresh ginger, if using.
+2. Once the tea is boiling, add about half a mug of milk, or more or less depending on how milky you want it, along with 2-3 crushed cardamom pods. If it's cold or I'm sick, I also like to add 1 crushed clove. Don't walk away. This will boil over literally the moment you turn around.
+3. Let it simmer and bubble up twice, then strain and serve.
+
+I usually make chai with both fresh ginger and crushed cardamom, or my homemade chai masala, but it's great with just one or the other too. A simpler masala chai version is made with only 1 teaspoon of homemade chai masala, added in the last minute or two of boiling.
+
+A few things that matter:
+Drink it hot. Always.
+Let it actually simmer. It's not like steeping a tea bag.
+Customize. Your chai should be made with your preferred balance of milk, sugar, and spices. You can add various aromatics like mint, rose petals, or even lemongrass depending on the season and your preferences.`,
+      },
+      {
+        heading: 'Black, Green, and Herbal Teas',
+        text: `Holiday tea:
+One I especially like in December, other than chai, is black tea steeped with orange peel, cloves, and warming spices.
+
+I really like the combination of aromatic citrus and spice when it's actually cold outside. It feels festive and special.
+
+Jasmine green tea:
+Probably the clearest everyday example of what I like in green tea: light, fragrant, and floral.
+
+Chamomile:
+Chamomile is my default evening tea when I want something warm and it's too late in the day for caffeine. I steep it in boiling water for about 7 minutes, strain, and drink.
+
+Fennel tea:
+Another evening favorite, especially after a heavier meal.
+
+I don't buy special fennel tea bags. I already keep fennel seeds in my kitchen, and they make an excellent tea. Put about a tablespoon of fennel seeds between your palms and crush them slightly. Add them to a mug, fill with boiling water, and steep for at least 5 minutes.
+
+Mint tea:
+Herbal and refreshing. The best mint tea is made with freshly harvested mint leaves from my garden, but if not that, I like using high-quality dried mint leaf from a Middle Eastern store.
+
+This is one of my favorites when I want something simple and clean-tasting, especially after dinner.`,
+      },
+      {
+        heading: 'Special Teas I Have Enjoyed',
+        text: `These aren't things I constantly repurchase. Some have been gifts or one-off treats, but they've been memorable enough that I'd happily drink them again.
+
+Mariage Freres Bouddha Bleu:
+A beautifully floral and aromatic green tea that's so unique.
+
+I really enjoy it, but Mariage Freres is fancy enough that this is definitely a treat rather than my everyday green tea.
+
+Big Red Robe / Da Hong Pao:
+I bought this tea at Asha Tea House in Berkeley, and it's one of the more memorable teas I've tried.
+
+What I remember most is an almost peachy flavor followed by a smoky finish.
+
+It's unusual in a way I really enjoy, the kind of tea that makes you stop and notice what you're drinking.`,
+      },
+      {
+        heading: 'What I Keep Around',
+        text: `Coffee staples:
+- Traditional South Indian coffee filter
+- Narasu's Udhayam 80:20 Coffee & Chicory Blend
+- Mount Hagen Organic Instant Coffee
+- FoodVille rechargeable milk frother
+
+Tea staples:
+- Tea India Mamri CTC Chai
+- Jasmine green tea
+- Chamomile
+- Fennel seeds
+- Mint tea
+
+Pantry basics:
+- Jaggery
+- Brown sugar
+- Milk
+- Fresh ginger
+- Cardamom
+- Cloves`,
+      },
+      {
+        heading: 'Tea Shops & Brands I Have Enjoyed',
+        text: `Specialty tea is something I tend to have around because of gifts from lovely people or occasional purchases when something intrigues me.
+
+Asha Tea House:
+A good place for teas that make me pay attention to the tea itself. I look forward to their fruit teas when I go to Berkeley. Big Red Robe is one I remember tasting and being surprised by.
+
+The Republic of Tea:
+A huge range of traditional, flavored, and herbal teas, and a brand I've had enough good experiences with that I'm happy to keep exploring it. I especially enjoy trying different teas from their assortments.
+
+Mariage Freres:
+Beautifully aromatic blends, especially when I want something floral or fruity. Bouddha Bleu is the standout for me so far. Their Earl Grey is also really lovely.
+
+It's definitely a splurge, though, so I think of it more as a gift or occasional treat than an everyday tea brand.`,
+      },
+    ],
+  },
+  {
     id: 'bay-area-eats',
     title: 'Bay Area Eats',
     subtitle: 'My absolute favorite spots',
