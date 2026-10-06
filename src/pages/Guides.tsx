@@ -62,7 +62,7 @@ export function Guides() {
               transition={{ delay: 0.2 + index * 0.2, duration: 0.5 }}
               className="group relative flex h-full flex-col overflow-hidden bg-white shadow-lg transition-all duration-500 hover:shadow-2xl"
             >
-              <Link to={`/guides/${guide.id}`} className="relative block h-72 overflow-hidden" aria-label={`Read ${guide.title}`}>
+              <Link to={`/guides/${guide.id}`} className="relative block h-72 overflow-hidden" aria-label={guide.id === 'k-drama-quiz' ? 'Take the K-drama quiz' : `Read ${guide.title}`}>
                 <div className="absolute inset-0 z-10 bg-black/10 transition-colors group-hover:bg-black/0" />
                 <img
                   src={guide.thumbnail ?? guide.image}
@@ -90,7 +90,7 @@ export function Guides() {
                     to={`/guides/${guide.id}`}
                     className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-900 transition-all hover:text-saffron group-hover:gap-3"
                   >
-                    Read Full Guide <ArrowRight size={14} />
+                    {guide.id === 'k-drama-quiz' ? 'Take the quiz' : 'Read Full Guide'} <ArrowRight size={14} />
                   </Link>
                 </div>
               </div>
