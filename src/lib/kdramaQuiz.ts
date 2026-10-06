@@ -214,7 +214,7 @@ export const kdramaQuizQuestions: QuizQuestion[] = [
       },
       {
         id: 'raspberry-sorbet',
-        label: '🍋 Raspberry sorbet',
+        label: '🍧 Raspberry sorbet',
         signal: { comedy: 4, pace: 4, emotionalIntensity: 2, comfort: 2, fantasy: 2 },
       },
     ],
