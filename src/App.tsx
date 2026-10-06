@@ -7,6 +7,7 @@ import { GuideDetail } from './pages/GuideDetail';
 import { MenuDetail } from './pages/MenuDetail';
 import { Menus } from './pages/Menus';
 import { Guides } from './pages/Guides';
+import { KDramaQuiz } from './pages/KDramaQuiz';
 import { Navigation } from './components/Navigation';
 import { Footer } from './components/Footer';
 import './global.css';
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/menus" element={<Menus />} />
             <Route path="/menus/:slug" element={<MenuDetail />} />
             <Route path="/guides" element={<Guides />} />
+            <Route path="/guides/k-drama-quiz" element={<KDramaQuiz />} />
             <Route path="/guides/:slug" element={<GuideDetail />} />
             <Route
               path="/about"

@@ -1,11 +1,13 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, BookOpen, Coffee, Compass, MapPin } from 'lucide-react';
+import { ArrowRight, BookOpen, Coffee, Compass, MapPin, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { guides } from '../lib/data';
 
 export function Guides() {
   const getIcon = (id: string) => {
     switch (id) {
+      case 'k-drama-quiz':
+        return <Sparkles className="h-6 w-6" />;
       case 'bay-area-eats':
         return <MapPin className="h-6 w-6" />;
       case 'travel-planning':
