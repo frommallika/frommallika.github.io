@@ -73,11 +73,10 @@ export const guides: Guide[] = [
   {
     id: 'k-drama-quiz',
     title: 'What K-Drama Should You Watch?',
-    subtitle: 'A cozy little quiz',
+    subtitle: 'A fun little quiz',
     description:
       'Answer a few mood questions and get three personal K-drama recommendations from shows I have watched.',
-    image:
-      'https://images.unsplash.com/photo-1594909122845-11baa439b7bf?q=80&w=1000&auto=format&fit=crop',
+    image: `${import.meta.env.BASE_URL}images/guide-k-drama-quiz.png`,
     date: 'October 2026',
     content: [],
   },
