@@ -49,15 +49,16 @@ export interface ScoredShow {
 export const QUIZ_SCORING = {
   neutralPreference: 3,
   fitScale: 1.7,
-  recommendationBonus: {
-    enthusiastically: 0.8,
-    yes: 0.45,
-    maybe: 0,
-  },
-  ratingBonus: {
-    loved: 0.3,
-    liked: 0.12,
-    fine: 0,
+  preferenceContrast: 2,
+  questionWeights: {
+    color: 1,
+    food: 1,
+    drink: 1,
+    dessert: 1,
+    weather: 2,
+    travel: 1,
+    evening: 2,
+    'story-hook': 4,
   },
   dimensionWeights: {
     emotionalIntensity: 1,
@@ -78,8 +79,8 @@ export const QUIZ_SCORING = {
 } satisfies {
   neutralPreference: number;
   fitScale: number;
-  recommendationBonus: Record<KDramaShow['recommend'], number>;
-  ratingBonus: Record<KDramaShow['rating'], number>;
+  preferenceContrast: number;
+  questionWeights: Record<string, number>;
   dimensionWeights: DimensionProfile;
   diversity: {
     alsoTryMinimumProfileDistance: number;
@@ -129,7 +130,7 @@ export const kdramaQuizQuestions: QuizQuestion[] = [
       {
         id: 'deep-blue',
         label: '🌊 Deep blue',
-        signal: { emotionalIntensity: 4, suspense: 3, comfort: 2, pace: 2, fantasy: 3 },
+        signal: { emotionalIntensity: 4, suspense: 3, comfort: 2, pace: 2, fantasy: 3, romance: 2 },
       },
       {
         id: 'forest-green',
@@ -156,7 +157,7 @@ export const kdramaQuizQuestions: QuizQuestion[] = [
       {
         id: 'pizza',
         label: '🍕 Pizza',
-        signal: { comedy: 4, comfort: 4, emotionalIntensity: 1, suspense: 1, pace: 2 },
+        signal: { comedy: 5, comfort: 4, emotionalIntensity: 1, suspense: 1, pace: 2 },
       },
       {
         id: 'tacos',
@@ -188,7 +189,7 @@ export const kdramaQuizQuestions: QuizQuestion[] = [
       {
         id: 'tropical-cocktail',
         label: '🍹 Tropical cocktail',
-        signal: { fantasy: 4, comedy: 4, pace: 4, romance: 3, suspense: 2 },
+        signal: { fantasy: 4, comedy: 5, pace: 4, romance: 3, suspense: 2 },
       },
     ],
   },
@@ -215,7 +216,7 @@ export const kdramaQuizQuestions: QuizQuestion[] = [
       {
         id: 'raspberry-sorbet',
         label: '🍧 Raspberry sorbet',
-        signal: { comedy: 4, pace: 4, emotionalIntensity: 2, comfort: 2, fantasy: 2 },
+        signal: { comedy: 5, pace: 4, emotionalIntensity: 2, comfort: 2, fantasy: 2 },
       },
     ],
   },
@@ -242,7 +243,7 @@ export const kdramaQuizQuestions: QuizQuestion[] = [
       {
         id: 'cold-crisp',
         label: '❄️ Cold & crisp',
-        signal: { suspense: 5, pace: 4, emotionalIntensity: 4, comedy: 1, comfort: 1 },
+        signal: { suspense: 5, pace: 4, emotionalIntensity: 4, comedy: 1, comfort: 1, romance: 1, fantasy: 2 },
       },
     ],
   },
@@ -269,7 +270,7 @@ export const kdramaQuizQuestions: QuizQuestion[] = [
       {
         id: 'mountain-cabin',
         label: '🌲 A remote mountain cabin',
-        signal: { suspense: 4, emotionalIntensity: 4, pace: 2, comfort: 2, fantasy: 3 },
+        signal: { suspense: 4, emotionalIntensity: 4, pace: 2, comfort: 2, fantasy: 3, romance: 2, comedy: 1 },
       },
     ],
   },
@@ -286,7 +287,7 @@ export const kdramaQuizQuestions: QuizQuestion[] = [
       {
         id: 'bar',
         label: '🍸 Hang out at a bar',
-        signal: { romance: 5, comedy: 4, pace: 4, comfort: 3, emotionalIntensity: 2 },
+        signal: { romance: 5, comedy: 5, pace: 4, comfort: 3, emotionalIntensity: 2 },
       },
       {
         id: 'bath-bedtime',
@@ -296,7 +297,7 @@ export const kdramaQuizQuestions: QuizQuestion[] = [
       {
         id: 'one-more-episode',
         label: '📺 "One more episode" until 2 a.m.',
-        signal: { pace: 5, suspense: 5, emotionalIntensity: 4, comfort: 1, fantasy: 3 },
+        signal: { pace: 5, suspense: 5, emotionalIntensity: 4, comfort: 1, fantasy: 3, romance: 2, comedy: 2 },
       },
     ],
   },
@@ -313,17 +314,17 @@ export const kdramaQuizQuestions: QuizQuestion[] = [
       {
         id: 'tickets',
         label: '🎟️ Tickets to somewhere',
-        signal: { fantasy: 4, pace: 4, comedy: 4, comfort: 3, romance: 3 },
+        signal: { fantasy: 4, pace: 4, comedy: 4, comfort: 3, romance: 2, emotionalIntensity: 2 },
       },
       {
         id: 'old-key',
         label: '🗝️ A strange old key',
-        signal: { fantasy: 5, suspense: 4, emotionalIntensity: 3, pace: 3, comedy: 2 },
+        signal: { fantasy: 5, suspense: 4, emotionalIntensity: 3, pace: 3, comedy: 2, romance: 2, comfort: 1 },
       },
       {
         id: 'secret-info',
         label: '📁 Information I was definitely not supposed to see',
-        signal: { suspense: 5, emotionalIntensity: 5, pace: 5, comfort: 1, comedy: 1 },
+        signal: { suspense: 5, emotionalIntensity: 5, pace: 5, comfort: 1, comedy: 1, romance: 1, fantasy: 2 },
       },
     ],
   },
@@ -832,21 +833,27 @@ export function buildPreferenceProfile(answerIds: Record<string, string>): Dimen
       return;
     }
 
+    const weight = QUIZ_SCORING.questionWeights[question.id as keyof typeof QUIZ_SCORING.questionWeights] ?? 1;
+
     quizDimensions.forEach((dimension) => {
       const value = answer.signal[dimension];
 
       if (typeof value === 'number') {
-        totals[dimension] += value;
-        counts[dimension] += 1;
+        totals[dimension] += value * weight;
+        counts[dimension] += weight;
       }
     });
   });
 
   return Object.fromEntries(
-    quizDimensions.map((dimension) => [
-      dimension,
-      counts[dimension] > 0 ? totals[dimension] / counts[dimension] : QUIZ_SCORING.neutralPreference,
-    ]),
+    quizDimensions.map((dimension) => {
+      const average = counts[dimension] > 0 ? totals[dimension] / counts[dimension] : QUIZ_SCORING.neutralPreference;
+      // Preserve distinct moods instead of flattening varied answers toward the midpoint.
+      const preference = QUIZ_SCORING.neutralPreference +
+        (average - QUIZ_SCORING.neutralPreference) * QUIZ_SCORING.preferenceContrast;
+
+      return [dimension, Math.max(1, Math.min(5, preference))];
+    }),
   ) as DimensionProfile;
 }
 
@@ -866,11 +873,7 @@ export function scoreShows(preferenceProfile: DimensionProfile): ScoredShow[] {
     .map((show) => {
       const profile = normalizeShowProfile(show);
       const distance = profileDistance(preferenceProfile, profile);
-      const score =
-        10 -
-        distance * QUIZ_SCORING.fitScale +
-        QUIZ_SCORING.recommendationBonus[show.recommend] +
-        QUIZ_SCORING.ratingBonus[show.rating];
+      const score = 10 - distance * QUIZ_SCORING.fitScale;
 
       return { show, profile, score, distance };
     })

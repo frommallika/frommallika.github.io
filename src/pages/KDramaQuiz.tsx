@@ -220,8 +220,7 @@ export function KDramaQuiz() {
                       I have three picks for you.
                     </h2>
                     <p className="mx-auto max-w-2xl font-body text-base font-light leading-relaxed text-gray-600">
-                      I matched your answers against each show's mood, then nudged the list toward the dramas I would
-                      most readily recommend.
+                      Three dramas for the mood you are in.
                     </p>
                   </div>
 
