@@ -46,6 +46,7 @@ export interface Guide {
   subtitle: string;
   description: string;
   image: string;
+  thumbnail?: string;
   places?: GuidePlace[];
   content: {
     heading: string;
@@ -657,6 +658,7 @@ It's definitely a splurge, though, so I think of it more as a gift or occasional
       'A practical framework for planning beautiful journeys. From 8 months out to the day before departure.',
     image:
       'https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=1000&auto=format&fit=crop',
+    thumbnail: `${import.meta.env.BASE_URL}images/guide-travel-planning.png`,
     date: 'October 2023',
     content: [
       {

@@ -65,7 +65,7 @@ export function Guides() {
               <Link to={`/guides/${guide.id}`} className="relative block h-72 overflow-hidden" aria-label={`Read ${guide.title}`}>
                 <div className="absolute inset-0 z-10 bg-black/10 transition-colors group-hover:bg-black/0" />
                 <img
-                  src={guide.image}
+                  src={guide.thumbnail ?? guide.image}
                   alt={guide.title}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
