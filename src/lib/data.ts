@@ -268,8 +268,7 @@ It's definitely a splurge, though, so I think of it more as a gift or occasional
     subtitle: 'My absolute favorite spots',
     description:
       'My favorite food in the Bay Area and what to get, gathered from saved places across San Francisco, Berkeley, the East Bay, the Peninsula, and the South Bay.',
-    image:
-      'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1000&auto=format&fit=crop',
+    image: '/images/bay-area-eats.png',
     date: 'June 2026',
     places: [
       {
