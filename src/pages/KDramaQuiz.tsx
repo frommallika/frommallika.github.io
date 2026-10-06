@@ -4,7 +4,6 @@ import { useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   kdramaQuizQuestions,
-  makeRecommendationCopy,
   selectRecommendations,
   type QuizQuestion,
   type ScoredShow,
@@ -15,23 +14,16 @@ type AnswerState = Record<string, string>;
 function ResultCard({
   label,
   result,
-  tone,
-  explanation,
 }: {
   label: string;
   result: ScoredShow;
-  tone: string;
-  explanation: string;
 }) {
   return (
     <article className="border border-stone-200 bg-white p-7 shadow-sm">
       <span className="mb-4 block text-xs font-bold uppercase tracking-widest text-saffron">{label}</span>
       <h3 className="mb-3 font-display text-3xl leading-tight text-gray-900">{result.show.title}</h3>
-      <p className="mb-4 text-sm font-bold uppercase tracking-widest text-emerald">{tone}</p>
-      <p className="mb-5 font-body text-base font-light leading-relaxed text-gray-600">{explanation}</p>
-      <div className="border-t border-stone-100 pt-5">
-        <p className="font-body text-sm italic leading-relaxed text-gray-500">{result.show.note}</p>
-      </div>
+      <p className="mb-4 text-sm font-bold text-emerald">{result.show.vibe}</p>
+      <p className="font-body text-base font-light leading-relaxed text-gray-600">{result.show.synopsis}</p>
     </article>
   );
 }
@@ -226,34 +218,16 @@ export function KDramaQuiz() {
 
                   <div className="grid gap-5">
                     <ResultCard
-                      explanation={makeRecommendationCopy(
-                        result.recommendations.match,
-                        'match',
-                        result.preferenceProfile,
-                      )}
                       label="Your match"
                       result={result.recommendations.match}
-                      tone="Best overall fit"
                     />
                     <ResultCard
-                      explanation={makeRecommendationCopy(
-                        result.recommendations.alsoTry,
-                        'alsoTry',
-                        result.preferenceProfile,
-                      )}
                       label="Also try"
                       result={result.recommendations.alsoTry}
-                      tone="A close match with another flavor"
                     />
                     <ResultCard
-                      explanation={makeRecommendationCopy(
-                        result.recommendations.wildcard,
-                        'wildcard',
-                        result.preferenceProfile,
-                      )}
                       label="Wildcard"
                       result={result.recommendations.wildcard}
-                      tone="A slightly moodier stretch"
                     />
                   </div>
 

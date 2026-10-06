@@ -11,6 +11,7 @@ export type DimensionProfile = Record<QuizDimension, number>;
 
 export interface KDramaShow {
   title: string;
+  synopsis: string;
   rating: 'loved' | 'liked' | 'fine';
   recommend: 'enthusiastically' | 'yes' | 'maybe';
   note: string;
@@ -333,6 +334,7 @@ export const kdramaQuizQuestions: QuizQuestion[] = [
 export const kdramaShows: KDramaShow[] = [
   {
     title: 'Hometown Cha-Cha-Cha',
+    synopsis: 'A city dentist opens a clinic in a seaside village, where a resourceful local handyman keeps getting under her skin. Between nosy neighbors and unexpected friendships, starting over takes a romantic turn.',
     rating: 'loved',
     recommend: 'enthusiastically',
     note:
@@ -350,6 +352,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Crash Course in Romance',
+    synopsis: "A devoted mother enters the fiercely competitive world of private tutoring to help her daughter succeed. An unlikely connection with a celebrity math teacher brings romance, schoolyard politics, and trouble to her doorstep.",
     rating: 'loved',
     recommend: 'yes',
     note: 'Lovely show with unique characters, family dynamics, and some social commentary.',
@@ -366,6 +369,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Business Proposal',
+    synopsis: 'A woman impersonates her friend on a blind date, determined to scare the man away. Discovering that he is her boss turns one outrageous favor into a tangled workplace romance.',
     rating: 'loved',
     recommend: 'yes',
     note: 'Really crazy plot, sort of silly, funny, entertaining.',
@@ -382,6 +386,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Mr. Queen',
+    synopsis: 'A modern-day chef wakes up in the body of a queen in the Joseon era. Navigating a royal marriage and dangerous palace politics becomes a very unconventional mission to get home.',
     rating: 'loved',
     recommend: 'enthusiastically',
     note: 'A pretty out there premise, very funny and entertaining. The characters stay with you.',
@@ -398,6 +403,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Extraordinary Attorney Woo',
+    synopsis: 'A gifted autistic lawyer starts her career at a prestigious law firm, bringing an extraordinary perspective to unusual cases. Courtroom victories are only part of the story as she navigates colleagues, friendships, and first love.',
     rating: 'loved',
     recommend: 'yes',
     note:
@@ -415,6 +421,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'King the Land',
+    synopsis: 'A wealthy hotel heir who distrusts smiles clashes with an employee whose sunny hospitality is her greatest strength. An inheritance battle complicates the romance growing behind their professional rivalry.',
     rating: 'loved',
     recommend: 'maybe',
     note: 'I enjoyed the characters in this romance. Lots of steamy scenes and great chemistry.',
@@ -431,6 +438,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Agent Kim Reactivated',
+    synopsis: 'When his daughter disappears, an apparently ordinary father returns to the dangerous skills he thought he had left behind. His rescue mission exposes a past that powerful enemies would rather keep buried.',
     rating: 'loved',
     recommend: 'yes',
     note: 'This is an intense action show with a good amount of comedy thrown in.',
@@ -447,6 +455,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Our Sticky Love',
+    synopsis: 'A prosecutor with amnesia finds herself in a rural village with a boxing coach who insists he is her boyfriend. Rebuilding her life means untangling his story, her missing memories, and a dangerous mystery.',
     rating: 'liked',
     recommend: 'maybe',
     note: 'A romance with lots of action, fun to watch.',
@@ -463,6 +472,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'When Life Gives You Tangerines',
+    synopsis: 'On Jeju Island, a spirited young woman and her steadfast first love build a life through poverty, parenthood, and changing times. Their story spans decades, tracing the dreams and sacrifices that shape a family.',
     rating: 'loved',
     recommend: 'maybe',
     note:
@@ -480,6 +490,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Squid Game',
+    synopsis: 'People drowning in debt enter a secret competition promising a life-changing fortune. Familiar childhood games become lethal contests, forcing desperate players to weigh survival against loyalty and humanity.',
     rating: 'liked',
     recommend: 'maybe',
     note:
@@ -497,6 +508,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Queen of Tears',
+    synopsis: 'A department-store heiress and her small-town lawyer husband have a marriage that looks perfect from the outside. As a crisis upends their lives, family ambitions and old wounds complicate a second chance at love.',
     rating: 'loved',
     recommend: 'yes',
     note: 'A unique post-wedding romance with lots of drama and intensity. An engaging watch with strong leads.',
@@ -513,6 +525,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Teach You a Lesson',
+    synopsis: 'A team of unconventional inspectors steps into schools where bullying, corruption, and powerful parents have overwhelmed the system. Their confrontational methods turn the fight to protect students and teachers into an action-packed reckoning.',
     rating: 'loved',
     recommend: 'maybe',
     note:
@@ -530,6 +543,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Crash Landing on You',
+    synopsis: 'A South Korean heiress is blown across the border during a paragliding trip. A North Korean officer hides her while they search for a way home, risking far more than either expected.',
     rating: 'loved',
     recommend: 'enthusiastically',
     note: 'A classic for a reason. Memorable characters, ludicrous premise, intense in moments, lots of fun.',
@@ -546,6 +560,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Bon Appétit, Your Majesty',
+    synopsis: 'A French-trained chef is transported to the Joseon era and must cook for a feared king with an exacting palate. Modern recipes become her tools for surviving the royal kitchen and an unexpected romance.',
     rating: 'loved',
     recommend: 'enthusiastically',
     note:
@@ -563,6 +578,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Tastefully Yours',
+    synopsis: 'An ambitious restaurant heir seeking culinary prestige meets a stubborn chef running a small restaurant on her own terms. Their competing ideas about food lead to collaboration, conflict, and a romance neither planned.',
     rating: 'loved',
     recommend: 'yes',
     note:
@@ -580,6 +596,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Doctor Cha',
+    synopsis: 'After twenty years spent caring for her family, a woman returns to medicine as a first-year resident. Reclaiming her career forces her to reconsider her marriage and the life she put on hold.',
     rating: 'liked',
     recommend: 'maybe',
     note:
@@ -597,6 +614,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Little Women',
+    synopsis: 'Three sisters determined to escape poverty become entangled with a wealthy and politically powerful family. Hidden fortunes and dangerous secrets test their loyalty as they try to find a way out of a sprawling conspiracy.',
     rating: 'liked',
     recommend: 'maybe',
     note:
@@ -614,6 +632,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Doctor Slump',
+    synopsis: 'Two former school rivals reunite just as their successful medical careers fall apart. Living nearby, they find unexpected comfort in each other while learning how to rebuild their lives beyond achievement and ambition.',
     rating: 'liked',
     recommend: 'maybe',
     note:
@@ -631,6 +650,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'When the Camellia Blooms',
+    synopsis: 'A single mother running a small-town bar faces relentless gossip and the attention of an earnest local policeman. As their romance grows, a serial killer casts a shadow over her hard-won independence.',
     rating: 'loved',
     recommend: 'yes',
     note:
@@ -648,6 +668,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'When the Phone Rings',
+    synopsis: 'A political spokesman and his nonverbal wife maintain a carefully controlled marriage of convenience. A threatening phone call shatters that arrangement, drawing them into a kidnapping mystery and secrets neither can keep hidden.',
     rating: 'liked',
     recommend: 'maybe',
     note:
@@ -665,6 +686,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Welcome to Samdal-ri',
+    synopsis: 'After her photography career collapses, a woman returns to her hometown on Jeju Island. Reuniting with her family and the childhood sweetheart she left behind opens a complicated path toward a fresh start.',
     rating: 'liked',
     recommend: 'maybe',
     note:
@@ -682,6 +704,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Dynamite Kiss',
+    synopsis: 'A brief romance on Jeju ends before either person can explain what it meant. They meet again at work, where she has posed as a married mother to land a job and he is her boss.',
     rating: 'fine',
     recommend: 'maybe',
     note: 'Decent, sort of funny/entertaining show which has some drama in parts.',
@@ -698,6 +721,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Love to Hate You',
+    synopsis: 'A fiercely independent lawyer and a famous actor have equally strong reasons to distrust romance. Forced into a dating arrangement, their competitive sparring starts to undermine everything they think they know about each other.',
     rating: 'liked',
     recommend: 'maybe',
     note: 'I enjoyed the reversal of gender stereotypes with the main characters in this show. It was a fun watch.',
@@ -714,6 +738,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'The Potato Lab',
+    synopsis: 'A passionate scientist has built her life around a rural potato research lab. The arrival of a rigid new director threatens her familiar world and sparks an unexpected workplace romance.',
     rating: 'fine',
     recommend: 'maybe',
     note:
@@ -731,6 +756,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Typhoon Family',
+    synopsis: "During the 1997 financial crisis, a carefree young man takes over his father's struggling trading company. Keeping the business alive becomes a crash course in responsibility, loyalty, and the people who make a family.",
     rating: 'loved',
     recommend: 'yes',
     note:
@@ -748,6 +774,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Memories of the Alhambra',
+    synopsis: 'A tech executive travels to Granada to pursue a revolutionary augmented-reality game and meets a young hostel owner. As the game begins crossing into real life, the search for its missing creator becomes a fight for survival.',
     rating: 'fine',
     recommend: 'maybe',
     note: 'A very unique premise around a game developer/investor getting increasingly sucked in a very realistic game.',
@@ -764,6 +791,7 @@ export const kdramaShows: KDramaShow[] = [
   },
   {
     title: 'Her Private Life',
+    synopsis: 'An accomplished art curator keeps her devotion to a K-pop idol carefully hidden from her professional life. A new gallery director and an unexpected romantic arrangement threaten the boundaries between her two worlds.',
     rating: 'fine',
     recommend: 'maybe',
     note:
@@ -936,65 +964,4 @@ export function selectRecommendations(answerIds: Record<string, string>) {
       wildcard,
     },
   };
-}
-
-export function makeRecommendationCopy(
-  scoredShow: ScoredShow,
-  role: 'match' | 'alsoTry' | 'wildcard',
-  preferenceProfile: DimensionProfile,
-) {
-  const show = scoredShow.show;
-  const wantsComfort = preferenceProfile.comfort >= 3.6;
-  const wantsRomance = preferenceProfile.romance >= 3.6;
-  const wantsSuspense = preferenceProfile.suspense >= 3.6;
-  const wantsFantasy = preferenceProfile.fantasy >= 3.6;
-  const wantsComedy = preferenceProfile.comedy >= 3.6;
-  const wantsIntensity = preferenceProfile.emotionalIntensity >= 3.6;
-
-  if (role === 'wildcard') {
-    if (wantsSuspense) {
-      return `${show.title} stretches the mood a little, but it keeps faith with your appetite for tension and momentum. Think of it as the slightly bolder pick on the tray.`;
-    }
-
-    if (wantsFantasy) {
-      return `${show.title} leans into the more escapist side of your answers without abandoning the emotional thread. It is the choice for when you want the door to open somewhere stranger.`;
-    }
-
-    return `${show.title} is the nudge outside your exact comfort zone: still connected to your answers, but with a different texture than the safest match.`;
-  }
-
-  const pieces: string[] = [];
-
-  if (wantsComfort) {
-    pieces.push('something warm and easy to settle into');
-  }
-
-  if (wantsRomance) {
-    pieces.push('real romantic chemistry');
-  }
-
-  if (wantsComedy) {
-    pieces.push('a lively sense of humor');
-  }
-
-  if (wantsSuspense) {
-    pieces.push('enough plot tension to keep you pressing next episode');
-  }
-
-  if (wantsFantasy) {
-    pieces.push('a little escapist shimmer');
-  }
-
-  if (wantsIntensity) {
-    pieces.push('some bigger feelings');
-  }
-
-  const visiblePieces = pieces.slice(0, 3);
-  const ending = visiblePieces.length
-    ? visiblePieces.length === 1
-      ? visiblePieces[0]
-      : `${visiblePieces.slice(0, -1).join(', ')} and ${visiblePieces[visiblePieces.length - 1]}`
-    : 'a balanced mix of character, charm, and momentum';
-
-  return `You seem to want ${ending}. ${show.title} lines up with that mood while still feeling specific and memorable.`;
 }

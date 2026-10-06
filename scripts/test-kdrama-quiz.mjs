@@ -18,6 +18,15 @@ function answerPath(ids) {
   }));
 }
 
+test('Every show has a short, distinct synopsis for its result card', () => {
+  for (const show of kdramaShows) {
+    assert.equal(typeof show.synopsis, 'string', show.title);
+    assert.ok(show.synopsis.trim().length >= 80, show.title);
+    assert.ok(show.synopsis.length <= 400, show.title);
+  }
+  assert.equal(new Set(kdramaShows.map((show) => show.synopsis)).size, kdramaShows.length);
+});
+
 test('Personal ratings and recommendation flags never affect the ranking', () => {
   const preference = normalizeShowProfile(kdramaShows[0]);
   const snapshot = () => scoreShows(preference).map(({ show, score }) => [show.title, score]);
