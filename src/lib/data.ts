@@ -723,7 +723,7 @@ export const recipes: Recipe[] = [
       'Heat the ghee in a heavy-bottomed pot over medium heat. Add the cumin seeds and let them sizzle until fragrant. Add the chopped curry leaves carefully, as they may splutter, and stir briefly.',
       'Add the finely chopped carrot and green beans, or your vegetables of choice. Saute for 3-4 minutes, stirring occasionally.',
       'Stir in the drained lentils, ginger paste, turmeric, salt, and black pepper. Add 2 cups of water and bring to a gentle boil.',
-      'Lower the heat and simmer, partially covered, until the lentils begin to soften, about 10-15 minutes. Start checking earlier if they were soaked overnight. Add a splash of water if the pot starts to look dry.',
+      'Lower the heat and simmer, partially covered, for about 5-7 minutes, until the soaked lentils begin to soften. Add a splash of water if the pot starts to look dry.',
       'Stir in the rolled oats and another cup of water. Simmer gently for about 8-10 minutes, stirring frequently, until the lentils, oats, and vegetables are fully soft. Cook a little longer if needed.',
       'Add more hot water, a little at a time, until the khichdi reaches your preferred porridge consistency. Taste and adjust the salt and black pepper.',
       'Serve hot. The khichdi thickens as it sits; stir in a splash of hot water to loosen it before serving or reheating.',
