@@ -697,6 +697,41 @@ It's definitely a splurge, though, so I think of it more as a gift or occasional
 
 export const recipes: Recipe[] = [
   {
+    id: 'oats-masoor-dal-khichdi',
+    title: 'Oats & Masoor Dal Khichdi',
+    slug: 'oats-masoor-dal-khichdi',
+    category: 'Indian',
+    description:
+      'A savory breakfast porridge with rolled oats, red lentils, and finely chopped vegetables. A ghee tadka of cumin and curry leaves adds warmth and fragrance to this soft, comforting one-pot khichdi.',
+    cookTime: 'About 30-35 mins, plus soaking',
+    servings: 'Serves 3-4',
+    ingredients: [
+      '1 tablespoon ghee',
+      '1 teaspoon cumin seeds',
+      '2 tablespoons chopped curry leaves',
+      'About 3/4 cup finely chopped carrot and green beans, or other vegetables of choice',
+      '3/4 cup red lentils (masoor daal), measured dry, then soaked and drained',
+      '1 tablespoon ginger paste',
+      '1/2 teaspoon turmeric',
+      'Salt, to taste',
+      'Freshly ground black pepper, to taste',
+      '1 cup rolled oats',
+      'About 3 cups water to start, plus more as needed',
+    ],
+    instructions: [
+      'Rinse the red lentils well. Soak in plenty of water for about 20-30 minutes, then drain.',
+      'Heat the ghee in a heavy-bottomed pot over medium heat. Add the cumin seeds and let them sizzle until fragrant. Add the chopped curry leaves carefully, as they may splutter, and stir briefly.',
+      'Add the finely chopped carrot and green beans, or your vegetables of choice. Saute for 3-4 minutes, stirring occasionally.',
+      'Stir in the drained lentils, ginger paste, turmeric, salt, and black pepper. Add 2 cups of water and bring to a gentle boil.',
+      'Lower the heat and simmer, partially covered, for about 10-15 minutes, until the lentils begin to soften. Add a splash of water if the pot starts to look dry.',
+      'Stir in the rolled oats and another cup of water. Simmer gently for about 8-10 minutes, stirring frequently, until the lentils, oats, and vegetables are fully soft. Cook a little longer if needed.',
+      'Add more hot water, a little at a time, until the khichdi reaches your preferred porridge consistency. Taste and adjust the salt and black pepper.',
+      'Serve hot. The khichdi thickens as it sits; stir in a splash of hot water to loosen it before serving or reheating.',
+    ],
+    image: `${import.meta.env.BASE_URL}images/oats-masoor-dal-khichdi.png`,
+    tags: ['Breakfast', 'Daal', 'One-Pot'],
+  },
+  {
     id: '5-ingredient-roasted-cauliflower-miso-soup',
     title: '5-Ingredient Roasted Cauliflower Miso Soup',
     slug: '5-ingredient-roasted-cauliflower-miso-soup',

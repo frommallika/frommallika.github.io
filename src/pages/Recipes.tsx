@@ -6,7 +6,7 @@ import { recipes } from '../lib/data';
 export function Recipes() {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState('All');
-  const filters = ['All', 'Indian', 'Fusion', 'Global', 'Soup', 'Daal', 'Chutney', 'Dinner'];
+  const filters = ['All', 'Indian', 'Fusion', 'Global', 'Breakfast', 'Soup', 'Daal', 'Chutney', 'Dinner'];
 
   const filteredRecipes = recipes.filter((recipe) => {
     const normalizedSearch = searchQuery.toLowerCase();
