@@ -719,7 +719,7 @@ export const recipes: Recipe[] = [
       'About 3 cups water to start, plus more as needed',
     ],
     instructions: [
-      'Rinse the split red lentils well. Cover with plenty of water and soak for at least 1 hour, or overnight as I usually do. For an overnight soak, keep them in the refrigerator. Drain and rinse before cooking; use fresh water for the khichdi.',
+      'Rinse the split red lentils well. Cover with plenty of water and soak for at least 1 hour, or overnight as I usually do. Drain before cooking.',
       'Heat the ghee in a heavy-bottomed pot over medium heat. Add the cumin seeds and let them sizzle until fragrant. Add the chopped curry leaves carefully, as they may splutter, and stir briefly.',
       'Add the finely chopped carrot and green beans, or your vegetables of choice. Saute for 3-4 minutes, stirring occasionally.',
       'Stir in the drained lentils, ginger paste, turmeric, salt, and black pepper. Add 2 cups of water and bring to a gentle boil.',
