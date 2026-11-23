@@ -702,7 +702,7 @@ export const recipes: Recipe[] = [
     slug: 'oats-masoor-dal-khichdi',
     category: 'Indian',
     description:
-      'A savory breakfast porridge with rolled oats, red lentils, and finely chopped vegetables. A ghee tadka of cumin and curry leaves adds warmth and fragrance to this soft, comforting one-pot khichdi.',
+      'A savory breakfast porridge with rolled oats, red lentils, and finely chopped vegetables. A ghee tadka of cumin and curry leaves adds warmth and fragrance to this soft, comforting one-pot khichdi. You can also make it with split yellow mung daal instead of masoor daal.',
     cookTime: 'About 30-35 mins, plus 1 hour or overnight soaking',
     servings: 'Serves 3-4',
     ingredients: [
