@@ -708,6 +708,7 @@ export const recipes: Recipe[] = [
     ingredients: [
       '1 tablespoon ghee',
       '1 teaspoon cumin seeds',
+      'A good pinch of hing (asafoetida), about 1/8 teaspoon',
       '2 tablespoons chopped curry leaves',
       'About 3/4 cup finely chopped carrot and green beans, or other vegetables of choice',
       '3/4 cup split red lentils (masoor daal), measured dry, then soaked and drained',
@@ -720,7 +721,7 @@ export const recipes: Recipe[] = [
     ],
     instructions: [
       'Rinse the split red lentils well. Cover with plenty of water and soak for at least 1 hour, or overnight as I usually do. Drain before cooking.',
-      'Heat the ghee in a heavy-bottomed pot over medium heat. Add the cumin seeds and let them sizzle until fragrant. Add the chopped curry leaves carefully, as they may splutter, and stir briefly.',
+      'Heat the ghee in a heavy-bottomed pot over medium heat. Add the cumin seeds and let them sizzle until fragrant. Add the hing and chopped curry leaves carefully, as they may splutter, and stir briefly.',
       'Add the finely chopped carrot and green beans, or your vegetables of choice. Saute for 3-4 minutes, stirring occasionally.',
       'Stir in the drained lentils, ginger paste, turmeric, salt, and black pepper. Add 2 cups of water and bring to a gentle boil.',
       'Lower the heat and simmer, partially covered, for about 5-7 minutes, until the soaked lentils begin to soften. Add a splash of water if the pot starts to look dry.',
